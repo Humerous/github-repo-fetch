@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './User-Avatar.module.scss';
+import styles from './user-avatar.module.scss';
 import Link from 'next/link';
 
 //<--- USER AVATAR FUNCTION --->

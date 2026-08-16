@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 
 //<--- NAVBAR FUNCTION --->
 const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const closeMenu = () => setMenuOpen(false);
+
   return (
     <nav
       className='navbar is-primary'
@@ -11,28 +15,32 @@ const Navbar = () => {
     >
       <div className='navbar-brand'>
         <Link href='/'>
-          <a className='navbar-item'>Github Repository 🗂️</a>
+          <a className='navbar-item' onClick={closeMenu}>Github Repository 🗂️</a>
         </Link>
-        <a
-          role='button'
-          className='navbar-burger burger'
+        <button
+          type='button'
+          className={`navbar-burger burger ${menuOpen ? 'is-active' : ''}`}
           aria-label='menu'
-          aria-expanded='false'
-          data-target='navbarBasicExample'
+          aria-expanded={menuOpen}
+          aria-controls='navbarBasicExample'
+          onClick={() => setMenuOpen((open) => !open)}
         >
           <span aria-hidden='true'></span>
           <span aria-hidden='true'></span>
           <span aria-hidden='true'></span>
-        </a>
+        </button>
       </div>
 
-      <div className='navbar-menu'>
+      <div
+        id='navbarBasicExample'
+        className={`navbar-menu ${menuOpen ? 'is-active' : ''}`}
+      >
         <div className='navbar-start'>
           <Link href='/'>
-            <a className='navbar-item'>Home</a>
+            <a className='navbar-item' onClick={closeMenu}>Home</a>
           </Link>
           <Link href='/about'>
-            <a className='navbar-item'>About</a>
+            <a className='navbar-item' onClick={closeMenu}>About</a>
           </Link>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { getProfile } from '../../services/githubService';
+import { getProfile } from '../../services/gitHubService';
 import styles from './Profile.module.scss';
 import ButtonLink from '../../components/shared/button-link';
 

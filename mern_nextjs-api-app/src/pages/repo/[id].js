@@ -1,5 +1,5 @@
 import React from 'react';
-import { getRepo } from '../../services/githubService';
+import { getRepo } from '../../services/gitHubService';
 import styles from './Repo.module.scss';
 import ButtonLink from '../../components/shared/button-link';
 import UserAvatar from '../../components/user-avatar';

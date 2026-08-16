@@ -1,5 +1,5 @@
 import React from 'react';
-import RepoListItem from './repo-list-item';
+import RepoListItem from './Repo-List-Item';
 import styles from './Repo-List.module.scss';
 
 //<--- REPO LIST FUNCTION --->

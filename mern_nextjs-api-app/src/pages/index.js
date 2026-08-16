@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Search from '../components/Search';
-import { searchRepos } from '../services/githubService';
+import { searchRepos } from '../services/gitHubService';
 import RepoList from '../components/Repo-List';
 import { getRandomWord } from '../helpers/randomWord.helper';
 import styles from './index.module.scss';

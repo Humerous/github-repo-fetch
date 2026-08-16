@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import styles from './repo-list-item.module.scss';
+import styles from './Repo-List-Item.module.scss';
 import { FaStar, FaCodeBranch, FaCode } from 'react-icons/fa';
 import UserAvatar from './user-avatar';
 
