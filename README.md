@@ -1,7 +1,7 @@
 # GitHub Repo Fetch mern_nextjs-api-app
 
 - My simple nextjs-api-app that fetching repository from GitHub .
-- deployed at - https://nextjs-api-app.vercel.app/
+- deployed at - https://github-repo-fetch-app.vercel.app/
 
 ### Table of Contents
 
