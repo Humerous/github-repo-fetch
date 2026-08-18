@@ -4,12 +4,20 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+  gap: 10px;
+  padding: 0 15px;
 }
 
 .loader {
-  width: 250px;
+  width: 100%;
+  max-width: 250px;
+  box-sizing: border-box;
 }
 
 .message {
   padding-top: 25px;
+  padding-left: 15px;
+  padding-right: 15px;
 }

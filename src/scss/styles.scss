@@ -9,8 +9,34 @@ html,
 body {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 .page {
   margin: 20px 15px 20px 15px;
+}
+
+//<--- HAMBURGER MENU STYLING --->
+.navbar-burger {
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: 0;
+  color: $app-black;
+
+  &:hover,
+  &:focus {
+    background-color: transparent;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $app-black;
+    outline-offset: -4px;
+  }
 }

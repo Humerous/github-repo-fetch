@@ -3,24 +3,37 @@
 @import '../scss/colors.scss';
 
 .repoListItem {
-  width: 350px;
+  width: 100%;
+  max-width: 350px;
+  min-width: 250px;
   margin: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-sizing: border-box;
 
   a:hover {
     color: $app-gold;
   }
 }
 
+@media (max-width: 600px) {
+  .repoListItem {
+    max-width: 100%;
+    min-width: auto;
+    margin: 10px 0;
+  }
+}
+
 .repoName {
   margin-bottom: 10px;
   font-weight: 700;
+  overflow-wrap: anywhere;
 }
 
 .description {
   color: $app-grey;
+  overflow-wrap: anywhere;
 }
 
 .counters {

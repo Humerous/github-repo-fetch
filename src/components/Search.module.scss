@@ -4,16 +4,54 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 15px;
   padding-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .searchInput {
-  width: 320px;
-  margin-right: 15px;
+  flex: 1 1 200px;
+  min-width: 200px;
+  max-width: 400px;
 }
 
 .languageSelect {
+  flex: 0 1 auto;
+  min-width: 160px;
+
   select {
-    width: 160px;
+    width: 100%;
+    min-width: 160px;
+  }
+}
+
+@media (max-width: 600px) {
+  .search {
+    flex-direction: column;
+    align-items: stretch;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .searchInput,
+  .languageSelect {
+    width: 100%;
+    min-width: 0;
+    max-width: none;
+    flex: none;
+  }
+
+  .languageSelect {
+    :global(.select) {
+      width: 100%;
+    }
+
+    select {
+      width: 100%;
+      min-width: 0;
+    }
   }
 }
