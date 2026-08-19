@@ -1,15 +1,26 @@
-//<--- IMPORT COLORS INTO STYLES  --->
-@import './colors.scss';
-$primary: $app-gold;
-$link: $app-black;
-
-@import 'bulma/bulma';
+@use 'bulma/sass' with (
+  $primary: #f0a500,
+  $link: #171a1f,
+  $dark: #171a1f
+);
+@use './colors' as colors;
 
 html,
+body,
+#__next {
+  min-height: 100%;
+}
+
+html {
+  background: colors.$app-background;
+}
+
 body {
-  padding: 0;
   margin: 0;
-  box-sizing: border-box;
+  background: colors.$app-background;
+  color: colors.$app-charcoal;
+  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 *,
@@ -18,25 +29,53 @@ body {
   box-sizing: border-box;
 }
 
-.page {
-  margin: 20px 15px 20px 15px;
+a {
+  color: inherit;
 }
 
-//<--- HAMBURGER MENU STYLING --->
-.navbar-burger {
-  appearance: none;
-  -webkit-appearance: none;
-  background-color: transparent;
-  border: 0;
-  color: $app-black;
+a:hover {
+  color: colors.$app-gold-hover;
+}
 
-  &:hover,
-  &:focus {
-    background-color: transparent;
-  }
+:focus-visible {
+  outline: 3px solid colors.$app-gold;
+  outline-offset: 3px;
+}
 
-  &:focus-visible {
-    outline: 2px solid $app-black;
-    outline-offset: -4px;
+.appShell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page {
+  width: min(calc(100% - 2rem), 72rem);
+  margin-inline: auto;
+  padding-block: 2rem 3rem;
+  flex: 1;
+}
+
+.button.is-primary {
+  color: colors.$app-charcoal;
+  font-weight: 700;
+}
+
+.input,
+.select select {
+  border-color: colors.$app-border;
+  box-shadow: none;
+}
+
+.input:focus,
+.input:focus-within,
+.select select:focus {
+  border-color: colors.$app-gold;
+  box-shadow: 0 0 0 0.125rem rgba(240, 165, 0, 0.18);
+}
+
+@media (min-width: 48rem) {
+  .page {
+    width: min(calc(100% - 3rem), 72rem);
+    padding-top: 2.5rem;
   }
 }

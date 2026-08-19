@@ -1,25 +1,102 @@
-//<--- REPOS PAGE STYLES --->
+@use '../../scss/colors' as colors;
 
-@import '../../scss/colors.scss';
+.page {
+  max-width: 52rem;
+}
+
+.backLink {
+  display: inline-flex;
+  margin-bottom: 1.5rem;
+  color: colors.$app-grey;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.backLink:hover {
+  color: colors.$app-gold-hover;
+}
 
 .header {
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
+}
 
-  span {
-    font-weight: 700;
-    font-size: 30px;
-    background: $app-light-grey;
-    padding: 5px;
-  }
+.eyebrow {
+  margin: 0 0 0.45rem;
+  color: colors.$app-gold-hover;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.header h1 {
+  margin: 0;
+  color: colors.$app-charcoal;
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  overflow-wrap: anywhere;
+}
+
+.owner {
+  margin-bottom: 1.5rem;
 }
 
 .description {
-  padding-bottom: 20px;
+  margin: 0 0 1.5rem;
+  color: colors.$app-grey;
+  font-size: 1.05rem;
+  line-height: 1.75;
 }
 
-.language {
-  font-weight: 500;
-  color: $app-dark-gold;
-  font-size: 24px;
-  padding-bottom: 15px;
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.metric {
+  padding: 0.9rem;
+  background: colors.$app-white;
+  border: 1px solid colors.$app-border;
+  border-radius: 0.65rem;
+}
+
+.metricLabel {
+  display: block;
+  margin-bottom: 0.2rem;
+  color: colors.$app-grey;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.metricValue {
+  color: colors.$app-charcoal;
+  font-weight: 900;
+  overflow-wrap: anywhere;
+}
+
+.topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.topics span {
+  padding: 0.3rem 0.6rem;
+  background: colors.$app-light-grey;
+  border-radius: 999px;
+  color: colors.$app-grey;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+@media (max-width: 35rem) {
+  .metrics {
+    grid-template-columns: 1fr;
+  }
 }

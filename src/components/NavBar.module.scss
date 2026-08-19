@@ -1,0 +1,168 @@
+@use '../scss/colors' as colors;
+
+.header {
+  background: colors.$app-charcoal;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.navbar {
+  width: min(calc(100% - 2rem), 72rem);
+  margin-inline: auto;
+  min-height: 4rem;
+  background: transparent;
+}
+
+.brandRow {
+  width: 100%;
+  align-items: stretch;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: colors.$app-white !important;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  min-width: 0;
+}
+
+.brand:hover,
+.brand:focus-visible {
+  background: transparent !important;
+}
+
+.brandMark {
+  display: block;
+  width: 2.35rem;
+  height: 2rem;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+
+.wordmark {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 0.98rem;
+  line-height: 1;
+}
+
+.fetch {
+  color: colors.$app-gold;
+}
+
+.menuButton {
+  width: 3rem;
+  min-width: 3rem;
+  height: 3rem;
+  margin: 0.5rem 0 0.5rem auto;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  appearance: none;
+  border: 0;
+  border-radius: 0.6rem;
+  background: transparent;
+  color: colors.$app-white;
+  cursor: pointer;
+}
+
+.menuButton:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.menuButton:focus-visible {
+  outline-color: colors.$app-gold;
+}
+
+.menuIcon {
+  width: 2.05rem;
+  height: 2.05rem;
+  overflow: visible;
+}
+
+.menuIcon path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.menuIcon circle {
+  fill: colors.$app-gold;
+  stroke: colors.$app-gold;
+  stroke-width: 1.5;
+}
+
+.menuIcon .menuLens {
+  fill: colors.$app-charcoal;
+  stroke: colors.$app-white;
+  stroke-width: 2.25;
+}
+
+.navLink {
+  position: relative;
+  font-weight: 600;
+}
+
+.navLink:hover,
+.navLink:focus-visible,
+.active {
+  color: colors.$app-gold !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+}
+
+.navbar :global(.navbar-menu) {
+  background: colors.$app-charcoal;
+  box-shadow: none;
+}
+
+@media (max-width: 63.999rem) {
+  .navbar :global(.navbar-menu.is-active) {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 0.45rem 0 0.75rem;
+  }
+
+  .navbar :global(.navbar-end) {
+    padding-inline: 0.25rem;
+  }
+
+  .navLink {
+    border-radius: 0.4rem;
+  }
+}
+
+@media (max-width: 22rem) {
+  .navbar {
+    width: min(calc(100% - 1rem), 72rem);
+  }
+
+  .brand {
+    gap: 0.45rem;
+    padding-left: 0.35rem;
+  }
+
+  .brandMark {
+    width: 2rem;
+    height: 1.75rem;
+  }
+
+  .wordmark {
+    font-size: 0.88rem;
+  }
+}
+
+@media (min-width: 64rem) {
+  .navbar {
+    width: min(calc(100% - 3rem), 72rem);
+  }
+
+  .brandRow {
+    width: auto;
+  }
+
+  .menuButton {
+    display: none;
+  }
+}

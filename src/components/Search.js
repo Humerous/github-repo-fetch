@@ -4,30 +4,29 @@ import Select from './shared/select';
 import LANGUAGES from '../constants/languages.constant';
 import styles from './Search.module.scss';
 
-//<--- SEARCH REPOS FUNCTION --->
-const Search = (props) => {
-  const { language, searchText, onSearchTextChange, onLanguageChange } = props;
-
-  const languages = [{ value: '', label: 'All' }, ...LANGUAGES];
+const Search = ({ language, searchText, onSearchTextChange, onLanguageChange }) => {
+  const languages = [{ value: '', label: 'All languages' }, ...LANGUAGES];
 
   return (
-    <div className={styles.search}>
+    <form className={styles.search} role='search' onSubmit={(event) => event.preventDefault()}>
       <TextInput
+        id='repo-search'
         className={styles.searchInput}
-        label='Repo Search'
+        label='Repository search'
         value={searchText}
-        onChange={(value) => onSearchTextChange(value)}
+        placeholder='Search repositories'
+        onChange={onSearchTextChange}
       />
       <Select
+        id='language-filter'
         className={styles.languageSelect}
         label='Language'
         value={language}
         options={languages}
-        onChange={(value) => onLanguageChange(value)}
+        onChange={onLanguageChange}
       />
-    </div>
+    </form>
   );
 };
 
-//<--- EXPORT FUNCTION --->
 export default Search;

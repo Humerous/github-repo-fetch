@@ -1,23 +1,24 @@
 import React from 'react';
 
-//<--- INPUT TEXT FIELD FUNCTION --->
-const TextInput = ({ label, value, onChange, placeholder, className }) => {
+const TextInput = ({ id, label, value, onChange, placeholder, className }) => {
   const textInputClass = className ? `${className} field` : 'field';
 
   return (
     <div className={textInputClass}>
+      <label className='label' htmlFor={id}>{label}</label>
       <div className='control'>
-        <label className='label'>{label}</label>
         <input
-          className='input is-primary'
+          id={id}
+          className='input'
+          type='search'
           value={value}
-          onChange={(e) => onChange(e.target.value)}
+          onChange={(event) => onChange(event.target.value)}
           placeholder={placeholder}
+          autoComplete='off'
         />
       </div>
     </div>
   );
 };
 
-//<--- EXPORT FUNCTION --->
 export default TextInput;

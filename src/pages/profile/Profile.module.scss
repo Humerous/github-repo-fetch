@@ -1,10 +1,104 @@
-//<--- PROFILE PAGE STYLES --->
+@use '../../scss/colors' as colors;
 
-.text {
-  padding-bottom: 5px;
+.page {
+  max-width: 44rem;
 }
 
-.counters {
-  padding-top: 15px;
-  padding-bottom: 40px;
+.backLink {
+  display: inline-flex;
+  margin-bottom: 1.5rem;
+  color: colors.$app-grey;
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+.backLink:hover {
+  color: colors.$app-gold-hover;
+}
+
+.profileHeader {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.avatar {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid colors.$app-border;
+}
+
+.username {
+  margin: 0 0 0.25rem;
+  color: colors.$app-gold-hover;
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.name {
+  margin: 0;
+  color: colors.$app-charcoal;
+  font-size: clamp(1.75rem, 5vw, 2.5rem);
+  font-weight: 900;
+  letter-spacing: -0.035em;
+}
+
+.bio {
+  margin: 0 0 1.5rem;
+  color: colors.$app-grey;
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+.location {
+  margin: -0.7rem 0 1.5rem;
+  color: colors.$app-grey;
+  font-size: 0.9rem;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.metric {
+  padding: 0.9rem;
+  text-align: center;
+  background: colors.$app-white;
+  border: 1px solid colors.$app-border;
+  border-radius: 0.65rem;
+}
+
+.metricValue,
+.metricLabel {
+  display: block;
+}
+
+.metricValue {
+  color: colors.$app-charcoal;
+  font-size: 1.25rem;
+  font-weight: 900;
+}
+
+.metricLabel {
+  margin-top: 0.15rem;
+  color: colors.$app-grey;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+@media (max-width: 35rem) {
+  .profileHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .metrics {
+    grid-template-columns: 1fr;
+  }
 }

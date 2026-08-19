@@ -1,42 +1,59 @@
 import axios from 'axios';
 import { axiosGetCancellable } from '../helpers/axios.helper';
-//<--- API LINK TO GITHUB AND INFO --->
-const axiosConfig = {
-  baseURL: 'https://api.github.com/',
-  auth: {
-    username: process.env.GITHUB_CLIENT_ID,
-    password: process.env.GITHUB_CLIENT_SECRET,
-  },
-};
 
-//<--- SEARCH REPOS AND CODING LANGUAGES --->
-function searchRepos(searchText, language) {
-  const query = language ? `${searchText}+language:${language}` : searchText;
+function getGitHubHeaders() {
+  const headers = {
+    Accept: 'application/vnd.github+json',
+    'X-GitHub-Api-Version': '2022-11-28',
+  };
 
-  if (isServer()) {
-    return axios.get(
-      `search/repositories?q=${query}&sort=stars&order=desc`,
-      axiosConfig
-    );
+  if (process.env.GITHUB_TOKEN) {
+    headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
   }
 
-  return axiosGetCancellable(`api/search?q=${query}&sort=stars&order=desc`);
+  return headers;
 }
 
-//<--- GET REPOS BY Ids  --->
+const axiosConfig = {
+  baseURL: 'https://api.github.com/',
+  headers: getGitHubHeaders(),
+};
+
+function buildSearchQuery(searchText, language) {
+  return [searchText.trim(), language ? `language:${language}` : '']
+    .filter(Boolean)
+    .join(' ');
+}
+
+function searchRepos(searchText, language) {
+  const q = buildSearchQuery(searchText, language);
+  const params = { q, sort: 'stars', order: 'desc' };
+
+  if (isServer()) {
+    return axios.get('search/repositories', {
+      ...axiosConfig,
+      params,
+    });
+  }
+
+  return axiosGetCancellable('/api/search', { params });
+}
+
 function getRepo(id) {
   return axios.get(`repositories/${id}`, axiosConfig);
 }
 
-//<--- GET PROFILE NAME  --->
 function getProfile(username) {
   return axios.get(`users/${username}`, axiosConfig);
 }
 
-//<--- SERVER WINDOW  --->
+function getSearchErrorType(error) {
+  const status = error?.response?.status;
+  return status === 403 || status === 429 ? 'rate-limit' : 'error';
+}
+
 function isServer() {
   return typeof window === 'undefined';
 }
 
-//<--- EXPORT FUNCTIONS  --->
-export { searchRepos, getRepo, getProfile };
+export { getProfile, getRepo, getSearchErrorType, searchRepos };

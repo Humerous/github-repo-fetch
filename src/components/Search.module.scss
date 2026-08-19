@@ -1,57 +1,48 @@
-//<--- SEARCH PAGE STYLES --->
+@use '../scss/colors' as colors;
 
 .search {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-  padding-bottom: 10px;
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 14rem;
+  gap: 1rem;
   width: 100%;
-  box-sizing: border-box;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding: 1.05rem;
+  background: colors.$app-white;
+  border: 1px solid colors.$app-border;
+  border-radius: 0.85rem;
+  box-shadow: 0 0.65rem 1.8rem rgba(23, 26, 31, 0.05);
+  overflow: hidden;
 }
 
-.searchInput {
-  flex: 1 1 200px;
-  min-width: 200px;
-  max-width: 400px;
+.search::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: colors.$app-gold;
 }
 
+.searchInput,
 .languageSelect {
-  flex: 0 1 auto;
-  min-width: 160px;
-
-  select {
-    width: 100%;
-    min-width: 160px;
-  }
+  min-width: 0;
+  margin-bottom: 0 !important;
 }
 
-@media (max-width: 600px) {
+.search :global(.label) {
+  color: colors.$app-charcoal;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.015em;
+}
+
+.search :global(.input),
+.search :global(.select select) {
+  min-height: 2.85rem;
+  background: #fbfcfd;
+}
+
+@media (max-width: 40rem) {
   .search {
-    flex-direction: column;
-    align-items: stretch;
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  .searchInput,
-  .languageSelect {
-    width: 100%;
-    min-width: 0;
-    max-width: none;
-    flex: none;
-  }
-
-  .languageSelect {
-    :global(.select) {
-      width: 100%;
-    }
-
-    select {
-      width: 100%;
-      min-width: 0;
-    }
+    grid-template-columns: 1fr;
   }
 }

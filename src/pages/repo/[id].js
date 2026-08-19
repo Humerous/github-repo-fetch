@@ -1,40 +1,83 @@
 import React from 'react';
+import Head from 'next/head';
+import Link from 'next/link';
 import { getRepo } from '../../services/gitHubService';
-import styles from './Repo.module.scss';
+import { buildResultsHref, getQueryValue } from '../../helpers/navigation.helper';
 import ButtonLink from '../../components/shared/button-link';
 import UserAvatar from '../../components/user-avatar';
+import styles from './Repo.module.scss';
 
-//<--- REPOS IDS FUNCTIONS FOR THE CARDS --->
-const Repo = ({ repo }) => {
+const Repo = ({ repo, searchText, language }) => {
+  const topics = Array.isArray(repo.topics) ? repo.topics.slice(0, 6) : [];
+  const backHref = buildResultsHref(searchText, language);
+
   return (
-    <div>
-      <ButtonLink href='/' text='Back' />
+    <>
+      <Head>
+        <title>{repo.name} | GitHub Repo Fetch</title>
+      </Head>
 
-      <div className={styles.header}>
-        <span>{repo.name}</span>
-      </div>
-      <UserAvatar user={repo.owner}></UserAvatar>
-      <div className={styles.description}>{repo.description}</div>
-      <div className={styles.language}>{repo.language}</div>
+      <article className={styles.page}>
+        <Link href={backHref} className={styles.backLink}>← Back to results</Link>
 
-      <ButtonLink
-        href={repo.html_url}
-        text='View on Github'
-        type='dark'
-        target='_blank'
-        external
-      />
-    </div>
+        <header className={styles.header}>
+          <p className={styles.eyebrow}>Repository</p>
+          <h1>{repo.name}</h1>
+        </header>
+
+        <div className={styles.owner}>
+          <UserAvatar user={repo.owner} searchText={searchText} language={language} />
+        </div>
+
+        <p className={styles.description}>{repo.description || 'No description provided.'}</p>
+
+        <div className={styles.metrics}>
+          <div className={styles.metric}>
+            <span className={styles.metricLabel}>Language</span>
+            <span className={styles.metricValue}>{repo.language || 'Not specified'}</span>
+          </div>
+          <div className={styles.metric}>
+            <span className={styles.metricLabel}>Stars</span>
+            <span className={styles.metricValue}>{repo.stargazers_count.toLocaleString('en-US')}</span>
+          </div>
+          <div className={styles.metric}>
+            <span className={styles.metricLabel}>Forks</span>
+            <span className={styles.metricValue}>{repo.forks_count.toLocaleString('en-US')}</span>
+          </div>
+        </div>
+
+        {topics.length > 0 && (
+          <div className={styles.topics} aria-label='Repository topics'>
+            {topics.map((topic) => <span key={topic}>{topic}</span>)}
+          </div>
+        )}
+
+        <ButtonLink
+          href={repo.html_url}
+          text='View on GitHub'
+          type='dark'
+          target='_blank'
+          external
+        />
+      </article>
+    </>
   );
 };
 
-//<--- SERVER SIDE PROPS FUNCTIONS --->
 export const getServerSideProps = async ({ query }) => {
-  const res = await getRepo(query.id);
-  return {
-    props: { repo: res.data },
-  };
+  try {
+    const response = await getRepo(getQueryValue(query.id));
+
+    return {
+      props: {
+        repo: response.data,
+        searchText: getQueryValue(query.q),
+        language: getQueryValue(query.language),
+      },
+    };
+  } catch (error) {
+    return { notFound: true };
+  }
 };
 
-//<--- EXPORT FUNCTIONS --->
 export default Repo;

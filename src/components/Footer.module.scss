@@ -1,0 +1,78 @@
+@use '../scss/colors' as colors;
+
+.footer {
+  background: colors.$app-charcoal;
+  color: #d8dde5;
+  padding: 1.75rem 1rem;
+}
+
+.inner {
+  width: min(100%, 72rem);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.identity {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+}
+
+.identity img {
+  width: 2.125rem;
+  height: auto;
+}
+
+.brand {
+  margin: 0 0 0.45rem;
+  color: colors.$app-white;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+}
+
+.brand span {
+  color: colors.$app-gold;
+}
+
+.note {
+  margin: 0;
+  color: #aeb7c4;
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+.studio {
+  margin: 0.5rem 0 0;
+  color: colors.$app-gold;
+  font-size: 0.74rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.links a:hover,
+.links a:focus-visible {
+  color: colors.$app-gold;
+}
+
+@media (min-width: 48rem) {
+  .inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+  }
+
+  .links {
+    flex-shrink: 0;
+  }
+}

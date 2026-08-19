@@ -1,30 +1,26 @@
 import axios from 'axios';
 
-//<--- TOKEN HELPER FUNCTION --->
-const cancelConfig = {
-  request: null,
-  cancelToken: null,
-};
+let activeController = null;
 
-//<--- AXIOS HELPER FUNCTION --->
-async function axiosGetCancellable(url, config) {
-  if (cancelConfig.request) {
-    cancelConfig.request.cancel('canceled');
+async function axiosGetCancellable(url, config = {}) {
+  if (activeController) {
+    activeController.abort();
   }
 
-  cancelConfig.request = axios.CancelToken.source();
-  cancelConfig.cancelToken = cancelConfig.request.token;
-  Object.assign(cancelConfig, config);
+  activeController = new AbortController();
 
   try {
-    const res = await axios.get(url, cancelConfig);
-    return res;
+    return await axios.get(url, {
+      ...config,
+      signal: activeController.signal,
+    });
   } catch (error) {
-    if (error.message !== 'canceled') {
-      throw error;
+    if (error.code === 'ERR_CANCELED' || error.name === 'CanceledError') {
+      return null;
     }
+
+    throw error;
   }
 }
 
-//<--- EXPORT FUNCTIONS --->
 export { axiosGetCancellable };
