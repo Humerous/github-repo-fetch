@@ -39,6 +39,32 @@
 .search :global(.select select) {
   min-height: 2.85rem;
   background: #fbfcfd;
+  color: colors.$app-charcoal;
+  -webkit-text-fill-color: colors.$app-charcoal;
+  opacity: 1;
+  color-scheme: light;
+}
+
+.search :global(.input) {
+  caret-color: colors.$app-charcoal;
+}
+
+.search :global(.input::placeholder) {
+  color: colors.$app-grey;
+  -webkit-text-fill-color: colors.$app-grey;
+  opacity: 1;
+}
+
+.search :global(.select select option) {
+  color: colors.$app-charcoal;
+  background: colors.$app-white;
+}
+
+.search :global(.input:-webkit-autofill),
+.search :global(.input:-webkit-autofill:hover),
+.search :global(.input:-webkit-autofill:focus) {
+  -webkit-text-fill-color: colors.$app-charcoal;
+  caret-color: colors.$app-charcoal;
 }
 
 @media (max-width: 40rem) {
