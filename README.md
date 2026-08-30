@@ -1,6 +1,6 @@
 # GitHub Repo Fetch
 
-[![GitHub Repo Fetch showcase](docs/assets/github-repo-fetch-showcase.webp)](https://github-repo-fetch-2026.vercel.app)
+[![GitHub Repo Fetch showcase](docs/assets/github-repo-fetch-showcase-v2.webp)](https://github-repo-fetch-2026.vercel.app)
 
 A modernised version of my original 2020 Hyperion Development Bootcamp project.
 
