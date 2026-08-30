@@ -1,5 +1,7 @@
 # GitHub Repo Fetch
 
+[![GitHub Repo Fetch showcase](docs/assets/github-repo-fetch-showcase.webp)](https://github-repo-fetch-2026.vercel.app)
+
 A modernised version of my original 2020 Hyperion Development Bootcamp project.
 
 GitHub Repo Fetch searches GitHub repositories, filters results by language, and provides repository and profile details using the GitHub API.
