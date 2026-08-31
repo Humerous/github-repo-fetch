@@ -1,24 +1,23 @@
 # GitHub Repo Fetch
 
+**Search and inspect GitHub repositories through a focused Next.js interface.**
+
 [![GitHub Repo Fetch showcase](docs/assets/github-repo-fetch-showcase-v2.webp)](https://github-repo-fetch-2026.vercel.app)
 
-A modernised version of my original 2020 Hyperion Development Bootcamp project.
+A modernised version of a 2020 Hyperion Development Bootcamp project using the GitHub REST API.
 
-GitHub Repo Fetch searches GitHub repositories, filters results by language, and provides repository and profile details using the GitHub API.
+**Live:** [github-repo-fetch-2026.vercel.app](https://github-repo-fetch-2026.vercel.app)  
+**Original:** [github-repo-fetch-app.vercel.app](https://github-repo-fetch-app.vercel.app)  
+**Stack:** Next.js · React · JavaScript · Sass · Axios · GitHub REST API  
+**Status:** v2 · Complete / Live
 
-## Live Versions
-
-**Modernised 2026**  
-https://github-repo-fetch-2026.vercel.app
-
-**Original Preserved Version**  
-https://github-repo-fetch-app.vercel.app
+GitHub Repo Fetch searches repositories, filters results by language, and provides repository and profile details while preserving the original project as evidence of its starting point.
 
 ## Project Journey
 
 2020 Project → Preserved → Restored → Understood → Modernised → Deployed 2026
 
-The original project has been preserved as evidence of the starting point, while the modernised version improves the interface, responsiveness, accessibility, API handling, navigation, and overall user experience.
+The modernised version improves the interface, responsiveness, accessibility, API handling, navigation and overall user experience.
 
 ## Core Features
 
