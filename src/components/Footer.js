@@ -30,7 +30,7 @@ const Footer = () => (
         <Link href='/'>Home</Link>
         <Link href='/about'>About</Link>
         <a
-          href='https://github.com/Humerous/GitHub-Repo-Fetch-mern_nextjs-api-app'
+          href='https://github.com/Humerous/github-repo-fetch'
           target='_blank'
           rel='noopener noreferrer'>
           GitHub
